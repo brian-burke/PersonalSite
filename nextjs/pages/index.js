@@ -1,137 +1,204 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import {styled} from '@mui/system';
-import TextField from '@mui/material/TextField';
-import Typography from "@mui/material/Typography"
-import {duration, useTheme} from '@mui/material/styles';
-import Button from "@mui/material/Button"
+import * as React from "react";
+
 import Box from "@mui/material/Box";
-import {Collapse, Grow} from "@mui/material";
-import {useEffect, useState} from "react";
+import Switch from "@mui/material/Switch";
+import Paper from "@mui/material/Paper";
 import Slide from "@mui/material/Slide";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { useEffect, useState } from "react";
+import Typography from "@mui/material/Typography";
+import { Collapse, Grow } from "@mui/material";
 
-const NameContainer = styled(Box, {
-    shouldForwardProp: (prop) => prop !== 'left',
-})(({theme, left}) => ({
-    display: "flex",
-    alignItems: "end",
-    width: "50%",
-    height: "50%",
-    justifyContent: "start",
-    position: "absolute",
-    left: "50%",
-    backgroundColor: "black",
-    zIndex: "-100",
-    padding: "3px 30px",
+export default function SlideFromContainer() {
+  const leftRef = React.useRef(null);
+  const rightRef = React.useRef(null);
 
+  const firstnameList = ["B", "R", "I", "A", "N"];
+  const lastnameList = ["B", "U", "R", "K", "E"];
 
-    ...(left && {
-        left: 0,
-        justifyContent: "end"
-    }),
-}));
+  const frontendList = ["F", "R", "O", "N", "T", "E","N","d"];
+  const developerList = ["D", "E", "V", "E", "L", "O","P","E","R"];
 
-const NameContainerBottom = styled(Box, {
-    shouldForwardProp: (prop) => prop !== 'left',
-})(({theme, left}) => ({
-    display: "flex",
-    alignItems: "start",
-    width: "50%",
-    height: "50%",
-    top: "50%",
-    justifyContent: "start",
-    position: "absolute",
-    left: "50%",
-    backgroundColor: "black",
-    zIndex: "-100",
-    padding: "3px 30px",
+  const [collapse, setCollapse] = useState(true);
 
-    ...(left && {
-        left: 0,
-        justifyContent: "end"
-    }),
-}));
+  useEffect(() => {
+    setTimeout(() => {
+      setCollapse(false);
+    }, 200);
 
-export default function Index() {
+  });
 
-    const firstnameList = ["B", "R", "I", "A", "N"]
-    const lastnameList = ["B", "U", "R", "K", "E"]
+  return (
+    <>
+      <Box display={"flex"}>
+        <Box
+          sx={{
+            height: "100vh",
+            width: "50%",
+            display: "flex",
+            padding: 2,
+            borderRadius: 1,
+            backgroundColor: "black",
+            overflow: "hidden",
+          }}
+          ref={leftRef}
+        >
+          <Collapse
+            orientation="horizontal"
+            in={collapse}
+            timeout={200}
+            sx={{
+              backgroundColor: "white",
+              height: "100vh",
+              width: "50%",
+              position: "absolute",
+              zIndex: "100",
+              top: 0,
+              right: "50%",
+            }}
+          />
+          <Collapse
+            orientation="horizontal"
+            in={collapse}
+            timeout={200}
+            sx={{
+              backgroundColor: "white",
+              height: "100vh",
+              width: "50%",
+              position: "absolute",
+              zIndex: "100",
+              top: 0,
+              left: "50%",
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              justifyContent: "flex-end",
+              alignContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {firstnameList.map((letter, index) => (
+              <Slide
+                direction="left"
+                in={!collapse}
+                container={leftRef.current}
+                timeout={2000}
+                style={{
+                  transitionDelay: !collapse ? `${300 + (index-3) * 50}ms` : "0ms",
+                }}
+              >
+                <Typography variant={"h1"} color={"white"}>
+                  {letter}
+                </Typography>
+              </Slide>
+            ))}
+            <Box sx={{flexBasis:"100%"}}/>
+            {frontendList.map((letter, index) => (
+              <Slide
+                direction="left"
+                in={!collapse}
+                container={leftRef.current}
+                timeout={2000}
+                style={{
+                  transitionDelay: !collapse ? `${2300 + (index-6) * 40}ms` : "0ms",
+                }}
+              >
+                <Typography variant={"h5"} color={"white"}>
+                  {letter}
+                </Typography>
+              </Slide>
+            ))}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            height: "100vh",
+            width: "50%",
+            display: "flex",
+            padding: 2,
+            borderRadius: 1,
+            backgroundColor: "black",
+            overflow: "hidden",
+          }}
+          ref={rightRef}
+        >
+          <Collapse
+            orientation="horizontal"
+            in={collapse}
+            timeout={200}
+            sx={{
+              backgroundColor: "white",
+              height: "100vh",
+              width: "50%",
+              position: "absolute",
+              zIndex: "100",
+              top: 0,
+              right: "50%",
+            }}
+          />
+          <Collapse
+            orientation="horizontal"
+            in={collapse}
+            timeout={200}
+            sx={{
+              backgroundColor: "white",
+              height: "100vh",
+              width: "50%",
+              position: "absolute",
+              zIndex: "100",
+              top: 0,
+              left: "50%",
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              justifyContent: "flex-start",
+              alignContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {lastnameList.map((letter, index) => (
+              <Slide
+                direction="right"
+                in={!collapse}
+                container={rightRef.current}
+                timeout={2000}
+                style={{
+                  transitionDelay: !collapse ? `${200 + (index-3) * 50}ms` : "0ms",
+                }}
+              >
+                <Typography variant={"h1"} color={"white"}>
+                  {letter}
+                </Typography>
+              </Slide>
+            ))}
+            <Box sx={{flexBasis:"100%"}}/>
+            {developerList.map((letter, index) => (
+              <Slide
+                direction="right"
+                in={!collapse}
+                container={rightRef.current}
+                timeout={2000}
+                style={{
+                  transitionDelay: !collapse ? `${2000 + (index-6) * 50}ms` : "0ms",
+                }}
+              >
+                <Typography variant={"h5"} color={"white"}>
+                  {letter}
+                </Typography>
+              </Slide>
+            ))}
 
-    useEffect(() => {
-        setTimeout(() => {
-            setCollapse(false)
-        }, 200);
-    })
-
-    const [collapse, setCollapse] = useState(true)
-    const containerRef = React.useRef(null);
-
-    const delayIncrement = 700
-    const initialDelay = 1000
-
-    return (
-        <>
-            <Box sx={{height: "100vh", position: "relative"}} >
-                <Collapse orientation="horizontal" in={collapse} timeout={200} sx={{
-                    backgroundColor: "white",
-                    height: "100vh",
-                    width: "50%",
-                    position: "absolute",
-                    zIndex: "100",
-                    top: 0,
-                    right: "50%"
-                }}/>
-                <Collapse orientation="horizontal" in={collapse} timeout={200} sx={{
-                    backgroundColor: "white",
-                    height: "100vh",
-                    width: "50%",
-                    position: "absolute",
-                    zIndex: "100",
-                    top: 0,
-                    left: "50%"
-                }}/>
-                <NameContainer left={true} ref={containerRef}>
-                    {firstnameList.map((letter, index) => (
-                        <Slide direction="right" in={collapse} container={containerRef.current}
-                               style={{transitionDelay: collapse ? '500ms' : '0ms'}}>
-                            <Typography variant={'h3'} color={"white"}>{letter}</Typography>
-                        </Slide>
-                    ))}
-                </NameContainer>
-                <NameContainerBottom left={true}>
-                    <Grow
-                        in={true}
-                        style={{transformOrigin: '0 0 0'}}
-                        {...({timeout: 5000})}>
-                        <Typography variant={'h3'} color={"white"}>Frontend</Typography>
-                    </Grow>
-                </NameContainerBottom>
-
-                <NameContainer left={false}>
-                    {lastnameList.map((letter, index) => (
-                        <Grow
-                            in={true}
-                            style={{transformOrigin: '0 0 0'}}
-                            {...({timeout: initialDelay + index * delayIncrement})}>
-                            <Typography variant={'h1'} color={"white"}>{letter}</Typography>
-                        </Grow>
-                    ))}
-                </NameContainer>
-                <NameContainerBottom left={false}>
-                    <Grow
-                        in={true}
-                        style={{transformOrigin: '0 0 0'}}
-                        {...({timeout: 5000})}>
-                        <Typography variant={'h3'} color={"white"}>Developer</Typography>
-                    </Grow>
-
-                </NameContainerBottom>
-
-            </Box>
-            <Box sx={{height: "100vh", position: "relative"}}>
-                test
-
-            </Box>
-        </>
-    );
+          </Box>
+        </Box>
+      </Box>
+    </>
+  );
 }
