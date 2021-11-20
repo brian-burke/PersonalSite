@@ -17,7 +17,7 @@ export default function SlideFromContainer() {
   const lastnameList = ["B", "U", "R", "K", "E"];
 
   const frontendList = ["F", "R", "O", "N", "T", "E","N","D"];
-  const developerList = ["D", "E", "V", "E", "L", "O","P","E","d"];
+  const developerList = ["D", "E", "V", "E", "L", "O","P","E","R"];
 
   const [collapse, setCollapse] = useState(true);
 
