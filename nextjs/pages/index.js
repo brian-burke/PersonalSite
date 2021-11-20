@@ -1,7 +1,5 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import {motion} from "framer-motion";
-import {Layout} from "../components/Layout";
 import {styled} from '@mui/system';
 import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography"
