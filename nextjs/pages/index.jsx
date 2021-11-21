@@ -7,7 +7,8 @@ import Slide from "@mui/material/Slide";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
-import { Collapse, Grow } from "@mui/material";
+import { Collapse } from "@mui/material";
+import ButtonAppBar from "../components/Appbar"
 
 export default function SlideFromContainer() {
   const leftRef = React.useRef(null);
@@ -16,7 +17,7 @@ export default function SlideFromContainer() {
   const firstnameList = ["B", "R", "I", "A", "N"];
   const lastnameList = ["B", "U", "R", "K", "E"];
 
-  const frontendList = ["F", "R", "O", "N", "T", "E","N","d"];
+  const frontendList = ["F", "R", "O", "N", "T", "E","N","D"];
   const developerList = ["D", "E", "V", "E", "L", "O","P","E","R"];
 
   const [collapse, setCollapse] = useState(true);
@@ -30,6 +31,7 @@ export default function SlideFromContainer() {
 
   return (
     <>
+    <ButtonAppBar collapse={collapse}/>
       <Box display={"flex"}>
         <Box
           sx={{
@@ -43,7 +45,7 @@ export default function SlideFromContainer() {
           }}
           ref={leftRef}
         >
-          <Collapse
+                      <Collapse
             orientation="horizontal"
             in={collapse}
             timeout={200}
@@ -126,34 +128,7 @@ export default function SlideFromContainer() {
           }}
           ref={rightRef}
         >
-          <Collapse
-            orientation="horizontal"
-            in={collapse}
-            timeout={200}
-            sx={{
-              backgroundColor: "white",
-              height: "100vh",
-              width: "50%",
-              position: "absolute",
-              zIndex: "100",
-              top: 0,
-              right: "50%",
-            }}
-          />
-          <Collapse
-            orientation="horizontal"
-            in={collapse}
-            timeout={200}
-            sx={{
-              backgroundColor: "white",
-              height: "100vh",
-              width: "50%",
-              position: "absolute",
-              zIndex: "100",
-              top: 0,
-              left: "50%",
-            }}
-          />
+
           <Box
             sx={{
               display: "flex",

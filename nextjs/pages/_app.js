@@ -4,7 +4,6 @@ import Head from 'next/head';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {CacheProvider} from '@emotion/react';
-import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import {createTheme} from "@mui/material";
 
@@ -13,6 +12,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
     const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
+
 
     const theme = createTheme({
         typography: {
