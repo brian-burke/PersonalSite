@@ -23,22 +23,6 @@ export default function contact() {
         height: "100vh",
       }}
     >
-      <Appbar />
-      <Box>
-        <Typography variant={"h1"} color="white">
-          Work
-        </Typography>
-        <Box display={"flex"} sx={{ maxWidth: "800px" }}>
-          <Image src={require("../media/PngItem_6088596.png")} alt="fireSpot" />
-          <Box sx={{display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <Typography variant={"h4"} color="white">
-            Fully responsive custom websites
-          </Typography>
-          <Button>View Live Site</Button>
-          </Box>
-
-        </Box>
       </Box>
-    </Box>
   );
 }
