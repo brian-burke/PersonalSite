@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import { Collapse, Grow } from "@mui/material";
 import { useEffect, useState } from "react";
 import Slide from "@mui/material/Slide";
-import responsiveImg from "../media/PngItem_6088596.png";
+import responsiveImg from "../public/PngItem_6088596.png";
 import Image from "next/image";
 import Appbar from "../components/Appbar";
 
@@ -29,7 +29,7 @@ export default function contact() {
           Work
         </Typography>
         <Box display={"flex"} sx={{ maxWidth: "800px" }}>
-          <Image src={require("../media/PngItem_6088596.png")} alt="fireSpot" />
+          <Image src={require("../public/PngItem_6088596.png")} alt="responsive graphic" />
           <Box sx={{display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
           <Typography variant={"h4"} color="white">
             Fully responsive custom websites
